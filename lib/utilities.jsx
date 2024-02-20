@@ -1,9 +1,8 @@
 import Swal from 'sweetalert2';
 
 export default async function addData(){
-      console.log('hola')
         const datos = {
-            "Nom_User": "Steven",
+            "Nom_User": "Gabriel",
             "Ape_User": "Gonzalez",
             "Ema_User": "ste@gmail.com",
             "Pass_User": "1234",
@@ -15,41 +14,24 @@ export default async function addData(){
             headers: { "Content-type": 'application/json' },
             body: JSON.stringify(datos)
         })
+        console.log(response)
     if (response.ok) {
-      let timerInterval;
+      window.location.href = '/validar';
+    } else if (response == "107"){
       Swal.fire({
-        title: "Seras redirigido!",
-        html: "Se ha enviado un codigo de verificaion a tu email  <b></b> milliseconds.",
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: () => {
-          Swal.showLoading();
-          const timer = Swal.getPopup().querySelector("b");
-          timerInterval = setInterval(() => {
-            timer.textContent = `${Swal.getTimerLeft()}`;
-          }, 100);
-        },
-        willClose: () => {
-          clearInterval(timerInterval);
-        }
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          console.log("I was closed by the timer");
-        }
+        icon: "error",
+        title: "Oops...",
+        text: "Esos datos ya existen",
+        footer: '<Link href="/auth/login">¿Ya tienes una cuenta? Inicia sesión</Link>'
       });
-
-      console.log('Recibiras un codigo ');
-      const timer = setTimeout(() => {
-        window.location.href = '/validar';
-      }, 5000);
-      return () => clearTimeout(timer);
     }
   };
 
-
-
-  const handleSubmit = async (s) => {
+  export const handleSubmit = async (s) => {
     s.preventDefault();
-
   }
+
+  export const metadata = {
+    title: "SENA Learn | Autenticación",
+    description: "Inicia sesión o regístrate para acceder a una gran variedad de cursos totalmente gratis.",
+  };
