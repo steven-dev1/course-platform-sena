@@ -1,15 +1,8 @@
 import Swal from 'sweetalert2';
 
-export default async function addData(){
-        const datos = {
-            "Nom_User": "Gabriel",
-            "Ape_User": "Gonzalez",
-            "Ema_User": "ste@gmail.com",
-            "Pass_User": "1234",
-            "Id_Rol_FK": 1,
-            "Dir_Ip": "192.168.0.1"
-        }
-        const response = await fetch('http://127.0.0.1:3000/api/register', {
+export default async function register(datos){
+        
+        const response = await fetch('/api/register', {
             method: "POST",
             headers: { "Content-type": 'application/json' },
             body: JSON.stringify(datos)
