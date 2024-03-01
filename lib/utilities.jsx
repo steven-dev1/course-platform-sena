@@ -20,8 +20,8 @@ export default async function register(datos){
     }
   };
 
-  export const handleSubmit = async (s) => {
-    s.preventDefault();
+  export const handleSubmit = async (e) => {
+    e.preventDefault();
   }
 
   export const metadata = {

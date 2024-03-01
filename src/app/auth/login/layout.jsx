@@ -1,6 +1,7 @@
 import { Work_Sans } from "next/font/google";
 import "../../globals.css";
 import Link from "next/link";
+// import { useHistory } from "react-router-dom";
 // import { usePathname } from "next/navigation";
 // import { metadata } from "../../../lib/utilities";
 
@@ -13,7 +14,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // const pathname = usePathname()
+
   return (
     <html lang="es">
       <body className={work_sans.className}>

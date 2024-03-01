@@ -25,8 +25,7 @@ export default function Register() {
             "Ape_User": data.Ape_User,
             "Ema_User": data.Ema_User,
             "Pass_User": data.Pass_User,
-            "Id_Rol_FK": 2,
-            "Dir_Ip": "192.168.0.X"
+            "Dir_Ip": "192.168.0.1"
         }
         const res = await fetch('http://127.0.0.1:3000/api/register', {
             method: 'POST',
@@ -34,7 +33,8 @@ export default function Register() {
             body: JSON.stringify(dataJSON)
         })
         const resJSON = await res.json()
-        if (resJSON.result == 200) {
+        // console.log(resJSON)
+        if (resJSON.result.code == 200) {
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -42,10 +42,12 @@ export default function Register() {
                 showConfirmButton: false,
                 timer: 1500
             });
-            setTimeout(() => {
-                window.location.href = '/auth/validate';
-            }, 2000);
-        } else if (resJSON.result == 107){
+            // console.log(resJSON.result.data.InsertId)
+            window.localStorage.setItem('VALIDATE_ID_USER', JSON.stringify(resJSON.result.data.InsertId));
+            // setTimeout(() => {
+            //     window.location.href = '/auth/validate';
+            // }, 1600);
+        } else if (resJSON.result.code == 107){
             Swal.fire({
                 icon: "error",
                 title: "Oops...",

@@ -1,16 +1,64 @@
 'use client'
-import Inputs from "@/components/Inputs";
+import {useState} from 'react';
+import { useForm } from "react-hook-form"
+// import { useRouter } from 'next/router';
+import { useAuthContext } from '@/contexts/authContext';
+// import Inputs from "@/components/Inputs";
 import Link from "next/link";
-import { handleSubmit } from "../../../../lib/utilities";
+import DangerMessage from '@/components/DangerMessage';
 
 export default function Login() {
+    const classInputs = "my-2 px-3 py-2 rounded-xl bg-[#f0f0f0] outline outline-[2px] outline-[#00324D] focus:outline-[#39A900] text-black"
+    const { register, handleSubmit, formState: { errors } } = useForm()
+    // const router = useRouter()
+    const { login } = useAuthContext();
+
+    const onSubmit = handleSubmit (async (data, event) => {
+        event.preventDefault();
+
+        const dataJSON = {
+            "Ema_User": data.Ema_User,
+            "Pass_User": data.Pass_User,
+            "Dir_Ip": "192.168.0.X"
+        }
+
+        const response = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataJSON)
+        })
+
+        if(!response.ok) {
+            return console.log("Error")
+        }
+
+        const tokens = await response.json();
+        login(tokens.result.data.codigo)
+
+        return window.location.href = '/admin'
+    })
+
+
+
     return (
         <main className="w-full h-screen flex justify-center items-center bg-[#00324D] lg:bg-white">
             <section className="lg:w-3/4 w-full flex flex-col items-center gap-2 mx-auto justify-center p-10 text-center">
                 <h2 className="text-3xl lg:text-5xl font-bold text-white lg:text-[#00324D]">Inicio de sesión</h2>
-                <form className="flex flex-col w-3/4 sm:w-2/4" onSubmit={handleSubmit}>
-                    <Inputs placeholder="Email" type="email" required/>
-                    <Inputs placeholder="Contraseña" type="password" required/>
+                <form className="flex flex-col w-3/4 sm:w-2/4" onSubmit={onSubmit}>
+                    <input placeholder="Email" type="text" className={classInputs} {...(register("Ema_User", {
+                            required: {
+                                value: true,
+                                message: "Este campo es obligatorio"
+                            },
+                        }))} />
+                    {errors.Ema_User && <DangerMessage>{errors.Ema_User.message}</DangerMessage>}
+                    <input placeholder="Contraseña" type="password" className={classInputs} {...(register("Pass_User", {
+                            required: {
+                                value: true,
+                                message: "Este campo es obligatorio"
+                            },
+                        }))} />
+                    {errors.Ema_User && <DangerMessage>{errors.Ema_User.message}</DangerMessage>}
                     <div className="flex items-center flex-col mt-2">
                         <button type="submit" className="inline-block bg-[#39A900] lg:text-white lg:bg-[#00324D] text-white  py-2 px-3 rounded-xl text-base sm:text-xl font-semibold hover:scale-110 transition-all duration-200 border-2 border-[#00324D] cursor-pointer">Iniciar sesión</button>
                     </div>

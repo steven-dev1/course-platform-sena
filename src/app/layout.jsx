@@ -1,4 +1,5 @@
 import { Work_Sans } from "next/font/google";
+import AuthContextProvider from "@/contexts/authContext";
 import "./globals.css";
 
 const work_sans = Work_Sans({ subsets: ["latin"], weight: ['300','400','500','600','700','800'] });
@@ -11,8 +12,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
+      <head>
+        <link rel="shortcut icon" href="/logo.png" />
+      </head>
       <body className={work_sans.className}>
-        {children}
+        <AuthContextProvider>
+          {children}
+        </AuthContextProvider>
       </body>
     </html>
   );
