@@ -1,12 +1,9 @@
 import React from 'react'
-import DarkButtons from './DarkButtons'
-import MensajeHeader from './MensajeHeader'
 
-function Header() {
+function HeaderUser() {
     return (
         <>
-        <MensajeHeader/>
-            <header className='mb-2 p-3'>
+            <header className='mb-2 p-5'>
                 <nav className='p-4 max-w-[90%] mx-auto'>
                     <ul className='flex justify-between items-center'>
                         <a hreft="#">
@@ -20,8 +17,6 @@ function Header() {
                         </div>
 
                         <div>
-                            <DarkButtons href="#" des="iniciar sesíon" />
-                            <DarkButtons href="#" des="Registrarse" />
                         </div>
                     </ul>
                 </nav>
@@ -30,4 +25,4 @@ function Header() {
     )
 }
 
-export default Header
+export default HeaderUser

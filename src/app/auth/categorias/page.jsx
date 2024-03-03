@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Inputs from '@/components/Inputs'
+import SignUpCard from '@/components/SignUpCard'
+
 function categorias() {
     return (
         <>
@@ -43,8 +45,49 @@ function categorias() {
                     <h2 className='text-3xl font-bold text-[#00324d] tex-center'>Cursos de programacion</h2>
                 </div>
 
-                <section className='grid w-full grid-col-3'>
-
+                <section className='grid w-full grid-cols-3 grid-row-2 place-items-center gap-10 my-10'>
+                    <SignUpCard
+                       title="Cursos de programacion desde 0"
+                       href="#"
+                       category="sistemas"
+                       score="4.7"
+                       img="" 
+                    />
+                    <SignUpCard
+                       title="Cursos de programacion desde 0"
+                       href="#"
+                       category="sistemas"
+                       score="4.7"
+                       img="" 
+                    />
+                    <SignUpCard
+                       title="Cursos de programacion desde 0"
+                       href="#"
+                       category="sistemas"
+                       score="4.7"
+                       img="" 
+                    />
+                    <SignUpCard
+                       title="Cursos de programacion desde 0"
+                       href="#"
+                       category="sistemas"
+                       score="4.7"
+                       img="" 
+                    />
+                    <SignUpCard
+                       title="Cursos de programacion desde 0"
+                       href="#"
+                       category="sistemas"
+                       score="4.7"
+                       img="" 
+                    />
+                    <SignUpCard
+                       title="Cursos de programacion desde 0"
+                       href="#"
+                       category="sistemas"
+                       score="4.7"
+                       img="" 
+                    />
                 </section>
 
             </main>

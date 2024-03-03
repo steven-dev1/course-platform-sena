@@ -8,7 +8,7 @@ function SignUpCard({ img, title, category, score, href}) {
                 <img src={img} className="w-[261px] h-[200px] bg-slate-400 rounded-3xl "></img>
             </picture>
             <div className="w-full text-black font-bold text-lg">
-                <h3 className="truncate">{title}</h3>
+                <h3 className="truncate text-wrap">{title}</h3>
             </div>
             <div className="text-black flex flex-col w-full">
                 <div className="flex gap-2">
