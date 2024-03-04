@@ -11,7 +11,7 @@ function perfilUSuario() {
             <main className='w-11/12 h-screen mx-auto p-10 flex items-center justify-around'>
 
                 <OpcionesUsu/>
-
+                
                 <section className='w-2/3 h-4/5 flex flex-col gap-5'>
 
                     <div className='w-full h-1/3 p-3 flex flex-col items-start justify-around my-10 gap-3'>
