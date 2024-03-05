@@ -25,7 +25,7 @@ export default function Register() {
             "Ape_User": data.Ape_User,
             "Ema_User": data.Ema_User,
             "Pass_User": data.Pass_User,
-            "Dir_Ip": "192.168.0.1"
+            "Dir_Ip": "198"
         }
         const res = await fetch('http://127.0.0.1:3000/api/register', {
             method: 'POST',
@@ -44,9 +44,9 @@ export default function Register() {
             });
             // console.log(resJSON.result.data.InsertId)
             window.localStorage.setItem('VALIDATE_ID_USER', JSON.stringify(resJSON.result.data.InsertId));
-            // setTimeout(() => {
-            //     window.location.href = '/auth/validate';
-            // }, 1600);
+            setTimeout(() => {
+                window.location.href = '/auth/validate';
+            }, 1600);
         } else if (resJSON.result.code == 107){
             Swal.fire({
                 icon: "error",

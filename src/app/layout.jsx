@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <head>
-        <link rel="shortcut icon" href="/logo.png" />
+        <link rel="shortcut icon" href="/.webp" />
       </head>
       <body className={work_sans.className}>
         <AuthContextProvider>

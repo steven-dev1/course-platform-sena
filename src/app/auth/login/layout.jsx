@@ -17,6 +17,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="es">
+      <head>
+        <link rel="shortcut icon" href="/logo.webp" />
+      </head>
       <body className={work_sans.className}>
         <Link href="/" className="group hidden lg:flex hover:scale-110 transition-all duration-200 absolute left-7 top-7 bg-[#00324D] rounded-full p-2 text-white cursor-pointer gap-3 justify-center items-center bi bi-arrow-left-circle-fill">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill='currentColor' viewBox="0 0 16 16">

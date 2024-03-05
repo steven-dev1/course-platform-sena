@@ -9,7 +9,7 @@ import {
 } from "react"
 import Cookies from "js-cookie";
 
-const AUTH_TOKENS_KEY = "NEXT_JS_AUTH";
+// const AUTH_TOKENS_KEY = "NEXT_JS_AUTH";
 
 export const AuthContext = createContext({
     login: (authTokens) => {},
@@ -17,11 +17,12 @@ export const AuthContext = createContext({
 });
 
 export default function AuthContextProvider({ children }) {
+    
     const login = useCallback(function (authTokens){
         Cookies.set('AUTH_TOKENS_KEY', JSON.stringify(authTokens));
     }, [])
     
-    const logout = useCallback(function (authTokens){
+    const logout = useCallback(function (){
         Cookies.remove('AUTH_TOKENS_KEY');
     }, [])
     

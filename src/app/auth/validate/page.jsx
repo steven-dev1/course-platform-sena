@@ -57,7 +57,7 @@ export default function ValidatePage() {
                     <h1 className="text-2xl font-bold text-white lg:text-black">Verificar cuenta</h1>
                 </div>
                 <form className="flex flex-col gap-2 justify-center items-center w-3/4 my-2" onSubmit={onSubmit}>
-                    <p className="text-sm lg:text-base font-medium text-center text-white lg:text-black">Le hemos enviado un código a su correo electrónico. Introduzcalo a continuación para activar su cuenta.</p>
+                    <p className="my-3 text-sm lg:text-base font-medium text-center text-white lg:text-black">Le hemos enviado un código a su correo electrónico. Introduzcalo a continuación para activar su cuenta.</p>
                     <input placeholder="Código de verificación" type="text" className={classInputs} {...(register("codigo", {
                         required: {
                             value: true,
@@ -66,7 +66,7 @@ export default function ValidatePage() {
                     }))} />
                     {errors.codigo && <DangerMessage>{errors.codigo.message}</DangerMessage>}
                     <div>
-                        <button className="my-3 inline-block lg:text-white lg:bg-bluesena text-white py-2 px-3 rounded-xl text-base sm:text-xl font-semibold hover:scale-110 transition-all duration-200 hover:shadow-lg bg-greensena text-center">Confirmar</button>
+                        <button className=" inline-block lg:text-white lg:bg-bluesena text-white py-2 px-3 rounded-xl text-base sm:text-xl font-semibold hover:scale-110 transition-all duration-200 hover:shadow-lg bg-greensena text-center">Confirmar</button>
                     </div>
                 </form>
 

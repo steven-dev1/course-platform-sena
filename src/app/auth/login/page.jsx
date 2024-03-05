@@ -1,17 +1,16 @@
 'use client'
-import {useState} from 'react';
 import { useForm } from "react-hook-form"
 // import { useRouter } from 'next/router';
 import { useAuthContext } from '@/contexts/authContext';
 // import Inputs from "@/components/Inputs";
 import Link from "next/link";
 import DangerMessage from '@/components/DangerMessage';
+import Swal from 'sweetalert2'
 
 export default function Login() {
     const classInputs = "my-2 px-3 py-2 rounded-xl bg-[#f0f0f0] outline outline-[2px] outline-[#00324D] focus:outline-[#39A900] text-black"
     const { register, handleSubmit, formState: { errors } } = useForm()
     // const router = useRouter()
-    const { login } = useAuthContext();
 
     const onSubmit = handleSubmit (async (data, event) => {
         event.preventDefault();
@@ -19,7 +18,7 @@ export default function Login() {
         const dataJSON = {
             "Ema_User": data.Ema_User,
             "Pass_User": data.Pass_User,
-            "Dir_Ip": "192.168.0.X"
+            "Dir_Ip": "198"
         }
 
         const response = await fetch('http://localhost:3000/api/login', {
@@ -32,10 +31,28 @@ export default function Login() {
             return console.log("Error")
         }
 
-        const tokens = await response.json();
-        login(tokens.result.data.codigo)
+        const responseJSON = await response.json();
+        if(responseJSON.result.code == 200){
+            Swal.fire({
+                icon: "success",
+                title: "Oops...",
+                text: "Debes validar tu nueva dirección IP",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        else if (responseJSON.result.code == 108){
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Debes validar tu nueva dirección IP",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        // login(tokens.result.data.codigo)
 
-        return window.location.href = '/admin'
+        // return window.location.href = '/'
     })
 
 
