@@ -23,6 +23,7 @@ export default function Login() {
 
         const response = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataJSON)
         })
@@ -33,13 +34,7 @@ export default function Login() {
 
         const responseJSON = await response.json();
         if(responseJSON.result.code == 200){
-            Swal.fire({
-                icon: "success",
-                title: "Oops...",
-                text: "Debes validar tu nueva dirección IP",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            return window.location.href = '/'
         }
         else if (responseJSON.result.code == 108){
             return Swal.fire({

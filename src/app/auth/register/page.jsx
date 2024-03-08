@@ -29,6 +29,7 @@ export default function Register() {
         }
         const res = await fetch('http://127.0.0.1:3000/api/register', {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataJSON)
         })
