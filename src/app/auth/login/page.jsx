@@ -1,7 +1,6 @@
 'use client'
 import { useForm } from "react-hook-form"
-// import { useRouter } from 'next/router';
-import { useAuthContext } from '@/contexts/authContext';
+import { useRouter } from 'next/navigation';
 // import Inputs from "@/components/Inputs";
 import Link from "next/link";
 import DangerMessage from '@/components/DangerMessage';
@@ -10,8 +9,8 @@ import Swal from 'sweetalert2'
 export default function Login() {
     const classInputs = "my-2 px-3 py-2 rounded-xl bg-[#f0f0f0] outline outline-[2px] outline-[#00324D] focus:outline-[#39A900] text-black"
     const { register, handleSubmit, formState: { errors } } = useForm()
-    // const router = useRouter()
-
+    const router = useRouter()
+    
     const onSubmit = handleSubmit (async (data, event) => {
         event.preventDefault();
 
@@ -34,7 +33,7 @@ export default function Login() {
 
         const responseJSON = await response.json();
         if(responseJSON.result.code == 200){
-            return window.location.href = '/'
+            return router.push('/dashboard')
         }
         else if (responseJSON.result.code == 108){
             return Swal.fire({

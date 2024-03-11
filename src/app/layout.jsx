@@ -1,5 +1,5 @@
 import { Work_Sans } from "next/font/google";
-import AuthContextProvider from "@/contexts/authContext";
+// import AuthContextProvider from "@/contexts/authContext";
 import "./globals.css";
 
 const work_sans = Work_Sans({ subsets: ["latin"], weight: ['300','400','500','600','700','800'] });
@@ -16,9 +16,7 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/.webp" />
       </head>
       <body className={work_sans.className}>
-        <AuthContextProvider>
           {children}
-        </AuthContextProvider>
       </body>
     </html>
   );
