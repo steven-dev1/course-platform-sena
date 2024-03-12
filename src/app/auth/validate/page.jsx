@@ -16,7 +16,7 @@ export default function ValidatePage() {
             "codigo": data.codigo
         }
         console.log(dataJSON)
-        const res = await fetch('http://127.0.0.1:3000/api/email_validate', {
+        const res = await fetch('http://127.0.0.1:3000/api/v1/email_validate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataJSON)

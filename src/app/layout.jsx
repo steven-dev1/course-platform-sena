@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <head>
-        <link rel="shortcut icon" href="/.webp" />
+        <link rel="shortcut icon" href="/logo.webp" />
       </head>
       <body className={work_sans.className}>
           {children}

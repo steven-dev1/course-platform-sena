@@ -13,15 +13,15 @@ export function GET(req, res) {
 
     try {
         verify(sessionTokenValue.value, "juniorTupapa")
-        const serialized = serialize('sessionToken', null, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-            maxAge: 0,
-            path: '/'
-        })
-        res.setHeader('Set-Cookie', serialized)
-        NextResponse.json('logout successful')
+        cookieStore.delete('sessionToken')
+        const response = NextResponse.json(
+            {},
+            {
+              status: 200,
+            }
+          );
+      
+          return response;
     } catch(err) {
         return NextResponse.json({error: 'invalid token'})
     }

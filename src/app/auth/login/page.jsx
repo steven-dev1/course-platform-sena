@@ -20,7 +20,7 @@ export default function Login() {
             "Dir_Ip": "198"
         }
 
-        const response = await fetch('http://localhost:3000/api/login', {
+        const response = await fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
@@ -33,7 +33,7 @@ export default function Login() {
 
         const responseJSON = await response.json();
         if(responseJSON.result.code == 200){
-            return router.push('/dashboard')
+            return router.push('/inicio')
         }
         else if (responseJSON.result.code == 108){
             return Swal.fire({

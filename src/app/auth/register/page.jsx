@@ -27,7 +27,7 @@ export default function Register() {
             "Pass_User": data.Pass_User,
             "Dir_Ip": "198"
         }
-        const res = await fetch('http://127.0.0.1:3000/api/register', {
+        const res = await fetch('http://127.0.0.1:3000/api/v1/register', {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
